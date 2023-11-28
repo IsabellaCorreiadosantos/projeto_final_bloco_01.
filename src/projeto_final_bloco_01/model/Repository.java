@@ -5,5 +5,8 @@ import  projeto_final_bloco_01.Menu;
 public interface Repository {
 
 	public void listarTodas();
+	public void cadastrarCliente(Cliente cliente) ;
+		
 	
 }
+

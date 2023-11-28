@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import Controller.Controller;
 import projeto_final_bloco_01.model.Carrinho;
+import projeto_final_bloco_01.model.Cliente;
 import projeto_final_bloco_01.model.Livros;
 import java.util.Scanner;
 
@@ -15,11 +17,12 @@ public class Menu {
 		
 		
 		Carrinho livro = new Carrinho();
-	
+		Controller controller = new Controller();
 		
 		int opcao;
 		String seuNome;
 		int senha;
+		
 	    Scanner leia = new Scanner(System.in);
 while (true) {
 			
@@ -55,16 +58,18 @@ while (true) {
 			
 			case 1:
 					System.out.println(Cores.TEXT_WHITE + " cadastre-se!\n\n");
-				
+					Cliente c1 = new Cliente();
 					System.out.println("Digite seu nome: ");
-					seuNome = leia.next();
+					c1.setNome(leia.next());
 					System.out.println("Digite sua senha: ");
-					leia.skip("\\R?");
-					senha = leia.nextInt();
-				
+					c1.setSenha(leia.nextInt()); 
+					
+					controller.cadastrarCliente(c1);
 				
 				
 			case 2: 
+				controller.listarTodas();
+				
 				
 			case 3:
 				System.out.println(Cores.TEXT_RED + Cores.ANSI_BLACK_BACKGROUND + "*****************************************************************************");
@@ -92,6 +97,9 @@ while (true) {
 				
 				livro.mostrarCar();
 			 break;
+			case 0: 
+				
+				break;
 			default:
 				System.out.println("\nOpção Inválida" + Cores.TEXT_RESET);
 				
